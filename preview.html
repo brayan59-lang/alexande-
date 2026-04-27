@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudio Avanzado de la Serie de Fibonacci</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#eef2f7;
+        margin:0;
+        padding:0;
+        line-height:1.6;
+    }
+
+    .container{
+        max-width:1000px;
+        margin:30px auto;
+        background:white;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0 0 15px rgba(0,0,0,0.15);
+    }
+
+    h1,h2{
+        color:#1f4e79;
+    }
+
+    h1{
+        text-align:center;
+        border-bottom:3px solid #1f4e79;
+        padding-bottom:10px;
+    }
+
+    .formula{
+        background:#f4f8fc;
+        padding:15px;
+        border-left:5px solid #1f4e79;
+        margin:15px 0;
+        font-size:18px;
+    }
+
+    ul{
+        margin-left:20px;
+    }
+
+    .formulario{
+        background:#f9f9f9;
+        padding:20px;
+        border-radius:10px;
+        margin-top:30px;
+    }
+
+    input, button{
+        padding:10px;
+        font-size:16px;
+        margin-top:10px;
+    }
+
+    button{
+        background:#1f4e79;
+        color:white;
+        border:none;
+        cursor:pointer;
+        border-radius:5px;
+    }
+
+    button:hover{
+        background:#163b5c;
+    }
+
+    #resultado{
+        margin-top:20px;
+        font-weight:bold;
+        color:green;
+    }
+
+    footer{
+        text-align:center;
+        margin-top:30px;
+        color:gray;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Estudio Avanzado de la Serie de Fibonacci</h1>
+
+    <h2>1. Introducción</h2>
+    <p>
+        La serie de Fibonacci es una sucesión matemática en la que cada término 
+        se obtiene sumando los dos anteriores. Fue introducida por Leonardo de Pisa, 
+        conocido como Fibonacci, en el siglo XIII.
+    </p>
+
+    <div class="formula">
+        F(n) = F(n−1) + F(n−2)<br>
+        F(0)=0, F(1)=1
+    </div>
+
+    <h2>2. ¿De qué trata la serie de Fibonacci?</h2>
+    <p>
+        Describe un crecimiento acumulativo basado en estados previos. 
+        Es un ejemplo clásico de recurrencia matemática.
+    </p>
+
+    <h2>3. Aplicaciones</h2>
+    <ul>
+        <li>Algoritmos y programación</li>
+        <li>Estructuras de datos</li>
+        <li>Modelos biológicos</li>
+        <li>Análisis financiero</li>
+        <li>Diseño y arte</li>
+    </ul>
+
+    <h2>4. Relación con la Razón Áurea</h2>
+    <p>
+        La razón entre términos consecutivos de Fibonacci se aproxima al número áureo:
+    </p>
+
+    <div class="formula">
+        φ = (1 + √5) / 2 ≈ 1.618
+    </div>
+
+    <h2>5. Ejemplo de la Serie</h2>
+    <p>
+        Primeros términos:
+    </p>
+    <div class="formula">
+        0, 1, 1, 2, 3, 5, 8, 13, 21, 34...
+    </div>
+
+    <h2>6. Calculadora Interactiva</h2>
+
+    <div class="formulario">
+        <label>Ingrese cantidad de términos:</label><br>
+        <input type="number" id="numero" min="1">
+        <button onclick="calcularFibonacci()">Generar Serie</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <h2>7. Conclusión</h2>
+    <p>
+        La serie de Fibonacci es una herramienta fundamental en matemáticas, 
+        informática y ciencias naturales. Su relación con la razón áurea la 
+        convierte en una de las secuencias más importantes y fascinantes de la matemática.
+    </p>
+
+    <footer>
+        Proyecto realizado en HTML y JavaScript
+    </footer>
+
+</div>
+
+<script>
+function calcularFibonacci() {
+    let n = parseInt(document.getElementById("numero").value);
+
+    if(isNaN(n) || n <= 0){
+        document.getElementById("resultado").innerHTML =
+            "Ingrese un número válido.";
+        return;
+    }
+
+    let a = 0, b = 1;
+    let serie = [];
+
+    for(let i=0; i<n; i++){
+        serie.push(a);
+        let temp = a + b;
+        a = b;
+        b = temp;
+    }
+
+    document.getElementById("resultado").innerHTML =
+        "Serie de Fibonacci:<br>" + serie.join(", ");
+}
+</script>
+
+</body>
+</html>
